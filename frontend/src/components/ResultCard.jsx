@@ -1,4 +1,4 @@
-function ResultCard({ result, keyword }) {
+function ResultCard({ result, keyword, pdfUrl }) {
   const highlightText = (text) => {
     if (!keyword) return text;
 
@@ -32,7 +32,19 @@ function ResultCard({ result, keyword }) {
 
       <p>{highlightText(result.snippet)}</p>
 
-      <button>
+      <button
+          onClick={() => {
+            if (!pdfUrl) {
+                alert("Please upload a PDF first.");
+                return;
+            }
+
+            window.open(
+                `http://127.0.0.1:8000${pdfUrl}`,
+                "_blank"
+            );
+        }}
+   >
         Open
       </button>
     </div>

@@ -1,6 +1,6 @@
 import ResultCard from "./ResultCard";
 
-function ResultList({ results, keyword }) {
+function ResultList({ results, keyword, pdfUrl }) {
   return (
     <div className="card">
       <h2>Results</h2>
@@ -10,10 +10,11 @@ function ResultList({ results, keyword }) {
       ) : (
         results.map((result, index) => (
           <ResultCard
-            key={index}
-            result={result}
-            keyword={keyword}
-          />
+              key={index}
+              result={result}
+              keyword={keyword}
+              pdfUrl={pdfUrl}
+            />
         ))
       )}
     </div>

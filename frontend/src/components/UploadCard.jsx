@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { uploadDocument } from "../services/api";
 
-function UploadCard() {
+function UploadCard({ onUploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [status, setStatus] = useState("");
 
@@ -22,6 +22,7 @@ function UploadCard() {
       setStatus("Uploading...");
 
       const result = await uploadDocument(selectedFile);
+      onUploadSuccess(result.pdf_url);
 
       setStatus(result.message);
     } catch (error) {

@@ -23,9 +23,11 @@ async def upload_pdf(file: UploadFile = File(...)):
 
     current_document["filename"] = file.filename
     current_document["pages"] = extracted_text
+    current_document["pdf_url"] = f"/uploads/{file.filename}"
 
     return {
         "message": "PDF uploaded successfully",
         "filename": file.filename,
-        "pages": len(extracted_text)
-    }
+        "pages": len(extracted_text),
+        "pdf_url": f"/uploads/{file.filename}"
+}
