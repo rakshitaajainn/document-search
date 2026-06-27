@@ -1,30 +1,21 @@
-import { useEffect, useState } from "react";
+import UploadCard from "./components/UploadCard";
+import SearchBox from "./components/SearchBox";
+import ResultList from "./components/ResultList";
 
 function App() {
-  const [message, setMessage] = useState("Loading...");
-
-  useEffect(() => {
-    fetch("/api")
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
-      })
-      .catch(() => {
-        setMessage("Failed to connect to backend");
-      });
-  }, []);
-
   return (
-    <div
-      style={{
-        textAlign: "center",
-        marginTop: "100px",
-        fontFamily: "Arial",
-      }}
-    >
+    <div className="container">
       <h1>Document Search</h1>
 
-      <h2>{message}</h2>
+      <p>
+        Upload a PDF and search keywords instantly.
+      </p>
+
+      <UploadCard />
+
+      <SearchBox />
+
+      <ResultList />
     </div>
   );
 }
