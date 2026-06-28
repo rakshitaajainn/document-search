@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import PdfViewer from "./components/PdfViewer";
 import UploadCard from "./components/UploadCard";
 import SearchBox from "./components/SearchBox";
 import ResultList from "./components/ResultList";
@@ -10,6 +10,7 @@ function App() {
   const [results, setResults] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [pdfUrl, setPdfUrl] = useState("");
+  const [selectedPage, setSelectedPage] = useState(1);
 
   const handleUploadSuccess = (url) => {
     setPdfUrl(url);
@@ -40,7 +41,11 @@ function App() {
       <ResultList
         results={results}
         keyword={keyword}
+        onOpenPage={setSelectedPage}
+      />
+      <PdfViewer
         pdfUrl={pdfUrl}
+        page={selectedPage}
       />
     </div>
   );
